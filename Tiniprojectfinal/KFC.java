@@ -1,15 +1,9 @@
-//NAME : MANOJKUMAR M
-//Enrollment Number : EBEON0823780424
-//Tini project title : KFC E-shopping
+//project title : KFC E-shopping
 
 /*    Description: The code represents a simple command-line program for an electronic shopping system based on the menu of a KFC restaurant.
                    Overall, this code simulates a basic electronic shopping experience at a KFC restaurant, where users can view the menu,
                    add items to their cart, view their cart, calculate the total cost, and complete the purchase.
-                   The code is well-structured, making it easy to understand and modify if needed. */
-
-//Keywords used : class,public,private,new,void,if,else,switch,case,default,for,while,return,break,static,true,false,etc.
-//K = keyword
-//C =Concept
+                   The code is well-structured, making it easy to understand and modify if needed. *
 
 package Tiniprojectfinal;
 import javax.xml.namespace.QName;
@@ -18,15 +12,15 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.*;
 
-class MenuItem{  //K1-class, C1-class concept
-    private String name;  //K2-private ,K3-String
+class MenuItem{  
+    private String name;  
     private double price;
     public MenuItem(String name,double price){
-       this.name=name;    //K4-this
+       this.name=name;   
         this.price=price;
     }
     public String getName(){
-       return name;    //K5-return
+       return name;    
     }
    public double getPrice(){
        return price;
@@ -34,9 +28,9 @@ class MenuItem{  //K1-class, C1-class concept
 
  }
 class Menu{
-    private List<MenuItem> items;  //C2-list
+    private List<MenuItem> items;  
     public Menu(){
-      items=new ArrayList<>();   //C3-Arraylist
+      items=new ArrayList<>();   
       items.add(new MenuItem("Chicken burger",150));
       items.add(new MenuItem("veg burger ",130));
       items.add(new MenuItem("Popcorn  Chicken",165));
@@ -47,26 +41,26 @@ class Menu{
     public void displayMenu() {
         System.out.println("Menu card");
         int itemNo = 1;  //K6-int
-        for (MenuItem item : items) {   //K7-for
+        for (MenuItem item : items) {  
             System.out.println(itemNo + " . " + item.getName() + " - ₹" + item.getPrice());
             itemNo++;
         }
     }
     public MenuItem getItem(int itemNumber){
-        if (itemNumber >= 1 && itemNumber <= items.size()){  //K8-if
+        if (itemNumber >= 1 && itemNumber <= items.size()){  
             return items.get(itemNumber - 1);
         }
         return null;
     }
 }
 class ShopingCard{  //C3-class,C4-object
-    private HashMap<MenuItem, Integer> CardItems =new HashMap<>();   //C4-collection
-    public void addToCard(MenuItem item,int quantity){  //K9-int
+    private HashMap<MenuItem, Integer> CardItems =new HashMap<>();   
+    public void addToCard(MenuItem item,int quantity){  
         if (CardItems.containsKey(item)){
             CardItems.put(item,CardItems.get(item)+quantity);
         }
         else {
-            CardItems.put(item,quantity);   //K10-else
+            CardItems.put(item,quantity);   
         }
     }
     public void ViewCard(){
@@ -74,7 +68,7 @@ class ShopingCard{  //C3-class,C4-object
             System.out.println("Your card is empty");
         }else {
             System.out.println("Your card");
-            double total= 0;             //K11-double
+            double total= 0;             
             for (Map.Entry<MenuItem,Integer> entry : CardItems.entrySet()){
                 MenuItem item=entry.getKey();
                 int quantity=entry.getValue();
@@ -87,7 +81,7 @@ class ShopingCard{  //C3-class,C4-object
     }
     public double CalculateTotal(){
         double total=0;
-        for (Map.Entry<MenuItem,Integer> entry : CardItems.entrySet()){   //C5-for looping
+        for (Map.Entry<MenuItem,Integer> entry : CardItems.entrySet()){   
             MenuItem item=entry.getKey();
             int quantity=entry.getValue();
             double itemTotal=item.getPrice()*quantity;
@@ -104,15 +98,15 @@ class ShopingCard{  //C3-class,C4-object
 }
 
 public class KFC {
-    public static void main(String[]args){  //K12-Static
-        Scanner sc=new Scanner(System.in);  //K13-new,C6-scanner
+    public static void main(String[]args){  
+        Scanner sc=new Scanner(System.in); 
         Menu menu=new Menu();
         ShopingCard card=new ShopingCard();
 
         System.out.println("Welcome to KFC !!!");
-      boolean shopping=true;  //K14-true,K15-boolean
+      boolean shopping=true;  
 
-       while(shopping){  //k16-while   //C7-while looping
+       while(shopping){  //k16-while   
             System.out.println("Options");
             System.out.println("1.View menu");
             System.out.println("2.Add items to card");
@@ -124,18 +118,18 @@ public class KFC {
             int choice= sc.nextInt();
             sc.nextLine();
 
-            switch (choice){  //K17-switch
-                case 1 :      //K18-case
+            switch (choice){ 
+                case 1 :     
                     menu.displayMenu();
 
-                    break;    //K19-break
+                    break;    
                 case 2:
                     menu.displayMenu();
                     System.out.print("Enter the item number: ");
                     int itemNumber =sc.nextInt();
                     sc.nextLine();
                     MenuItem SelectedMenuItem=menu.getItem(itemNumber);
-                    if (SelectedMenuItem!=null){  //C8-Conditional Statements
+                    if (SelectedMenuItem!=null){  
                         System.out.print("Enter the quantity : ");
                         int quantity=sc.nextInt();
                         sc.nextLine();
@@ -152,7 +146,7 @@ public class KFC {
                 case 4:
                     card.ViewCard();
                     card.checkOut();
-                    shopping=false;   //K20-flase
+                    shopping=false;   
                     break;
                 case 5:
                     shopping=false;
