@@ -3,7 +3,7 @@
 /*    Description: The code represents a simple command-line program for an electronic shopping system based on the menu of a KFC restaurant.
                    Overall, this code simulates a basic electronic shopping experience at a KFC restaurant, where users can view the menu,
                    add items to their cart, view their cart, calculate the total cost, and complete the purchase.
-                   The code is well-structured, making it easy to understand and modify if needed. *
+                   The code is well-structured, making it easy to understand and modify if needed. */
 
 package Tiniprojectfinal;
 import javax.xml.namespace.QName;
